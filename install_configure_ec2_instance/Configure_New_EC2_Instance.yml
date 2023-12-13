@@ -15,4 +15,5 @@
   roles:
   
     #- Setting_Up_EC2_Instance
+    - show_env_variables
 
