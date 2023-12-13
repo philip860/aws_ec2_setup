@@ -4,13 +4,13 @@
   gather_facts: true
   become: false
   vars:
-    key_name: my_aws             # Key used for SSH
-    region: ap-southeast-2       # Region may affect response and pricing
+    key_name: "{{ ansible lookup env }}"             # Key used for SSH
+    region: us-east-1       # Region may affect response and pricing
     image: ami-06cd706b6bacee637 # look in ec2 > ami (filter owner alias: amazon) or amis of manually launched instances
     id: "example testing"
     instance_type: t2.nano       # Choose instance type, check AWS for pricing
     # vpc_id: subnet-012345
-    sec_group: "test-security-group"
+    sec_group: "aws-admins"
    
   roles:
   
