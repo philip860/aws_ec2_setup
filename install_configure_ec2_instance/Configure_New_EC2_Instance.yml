@@ -11,7 +11,7 @@
     instance_type: t2.nano       # Choose instance type, check AWS for pricing
     # vpc_id: subnet-012345
     sec_group: "aws-admins"
-    ec2_access_key:  "{{ lookup('env', 'Access Key')  }}"
+    ec2_access_key:  "{{ lookup('env', 'AWS_ACCESS_KEY_ID')  }}"
     ec2_secret_key: "demo"
    
   roles:
