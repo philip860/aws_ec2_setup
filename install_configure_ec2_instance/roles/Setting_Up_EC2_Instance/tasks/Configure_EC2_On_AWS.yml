@@ -1,6 +1,3 @@
-    - name: Provisioning EC2 instances
-      block:
-
       - name: Generate SSH Public Key On localhost
         ansible.builtin.shell: "cat {{ ssh_pub_key_content }} > /root/my_aws.pub"
         args:
