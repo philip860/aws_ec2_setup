@@ -1,6 +1,11 @@
     - name: Provisioning EC2 instances
       block:
 
+      - name: Generate SSH Public Key On localhost
+        ansible.builtin.shell: "cat {{ ssh_pub_key_content }} > /root/my_aws.pub"
+        args:
+          executable: /bin/bash
+
       - name: Create security group
         amazon.aws.ec2_security_group:
           name: "{{ sec_group }}"
@@ -22,7 +27,7 @@
           aws_access_key: "{{ ec2_access_key }}"  # From vault as defined
           aws_secret_key: "{{ ec2_secret_key }}"  # From vault as defined
           key_material: "{{ item }}"
-        with_file: /path/to/my_aws.pub
+        with_file: /root/my_aws.pub
 
       - name: Start an instance with a public IP address
         amazon.aws.ec2_instance:
