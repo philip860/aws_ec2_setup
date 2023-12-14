@@ -4,4 +4,4 @@
 
 - name: Print  ec2_access_key name variable
   ansible.builtin.debug:
-    msg: "{{ ec2_access_key }}"
+    msg: "{{ AWS_ACCESS_KEY_ID }}"
