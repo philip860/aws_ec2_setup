@@ -11,6 +11,9 @@
     instance_type: t2.nano       # Choose instance type, check AWS for pricing
     # vpc_id: subnet-012345
     sec_group: "aws-admins"
+    
+    #These are environment vars from Ansible that reference the AWX creds stored in the GUI
+    #https://docs.ansible.com/automation-controller/4.1.0/html/userguide/credentials.html
     ec2_access_key:  "{{ lookup('env', 'AWS_ACCESS_KEY_ID')  }}"
     ec2_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY')  }}"
    
