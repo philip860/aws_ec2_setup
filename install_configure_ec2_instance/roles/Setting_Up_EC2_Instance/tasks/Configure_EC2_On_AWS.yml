@@ -1,6 +1,6 @@
       
       - name: Make File/Directory
-        ansible.builtin.shell: "sudo mkdir /tmp; sudo touch /tmp/my_aws.pub"
+        ansible.builtin.shell: "mkdir /tmp; touch /tmp/my_aws.pub"
         args:
           executable: /bin/bash
 
