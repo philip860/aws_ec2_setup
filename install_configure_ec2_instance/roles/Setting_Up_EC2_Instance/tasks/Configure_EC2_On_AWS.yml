@@ -1,5 +1,11 @@
+      
+      - name: Make File/Directory
+        ansible.builtin.shell: "sudo mkdir /tmp; sudo touch /tmp/my_aws.pub"
+        args:
+          executable: /bin/bash
+
       - name: Generate SSH Public Key On localhost
-        ansible.builtin.shell: "cat {{ ssh_pub_key_content }} > ./my_aws.pub"
+        ansible.builtin.shell: "cat {{ ssh_pub_key_content }} > /tmp/my_aws.pub"
         args:
           executable: /bin/bash
 
@@ -24,7 +30,7 @@
           aws_access_key: "{{ ec2_access_key }}"  # From vault as defined
           aws_secret_key: "{{ ec2_secret_key }}"  # From vault as defined
           key_material: "{{ item }}"
-        with_file: ./my_aws.pub
+        with_file: /tmp/my_aws.pub
 
       - name: Start an instance with a public IP address
         amazon.aws.ec2_instance:
