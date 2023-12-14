@@ -5,7 +5,7 @@
           executable: /bin/bash
 
       - name: Generate SSH Public Key On localhost
-        ansible.builtin.shell: "cat {{ ssh_pub_key_content }} > /awx/my_aws.pub"
+        ansible.builtin.shell: "echo {{ ssh_pub_key_content }} > /awx/my_aws.pub"
         args:
           executable: /bin/bash
 
