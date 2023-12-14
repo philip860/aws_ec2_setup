@@ -8,7 +8,7 @@
     key_name: "Demo-Automation"
     ssh_pub_key_content: "{{ ssh_public_key_var }}"    # Key used for SSH
     region: us-east-1       # Region may affect response and pricing
-    image: ami-06cd706b6bacee637 # look in ec2 > ami (filter owner alias: amazon) or amis of manually launched instances
+    image: ami-0ef50c2b2eb330511 # look in ec2 > ami (filter owner alias: amazon) or amis of manually launched instances
     id: "example testing"
     instance_type: t2.nano       # Choose instance type, check AWS for pricing
     # vpc_id: subnet-012345
