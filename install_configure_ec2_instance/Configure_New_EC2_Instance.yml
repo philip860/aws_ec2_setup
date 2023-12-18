@@ -7,7 +7,7 @@
     
     instance_type: t3.micro
 
-    ami: ami-0ef50c2b2eb330511
+    ami: ami-023c11a32b0207432
 
     key_name: ansible-demo
 
