@@ -1,0 +1,26 @@
+---
+- name: Configure A New EC2 Instance In AWS
+  hosts: localhost
+  gather_facts: true
+  become: false
+  vars:
+    
+    key_name: "Demo-Automation"
+    ssh_pub_key_content: "{{ ssh_public_key_var }}"    # Key used for SSH
+    region: us-east-1       # Region may affect response and pricing
+    image: ami-0ef50c2b2eb330511 # look in ec2 > ami (filter owner alias: amazon) or amis of manually launched instances
+    id: "example testing"
+    instance_type: t2.nano       # Choose instance type, check AWS for pricing
+    # vpc_id: subnet-012345
+    sec_group: "aws-admins2"
+
+    #These are environment vars from Ansible that reference the AWX creds stored in the GUI
+    #https://docs.ansible.com/automation-controller/4.1.0/html/userguide/credentials.html
+    ec2_access_key:  "{{ lookup('env', 'AWS_ACCESS_KEY_ID')  }}"
+    ec2_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY')  }}"
+   
+  roles:
+  
+    - Setting_Up_EC2_Instance
+    #- show_env_variables
+

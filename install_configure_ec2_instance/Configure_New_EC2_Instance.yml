@@ -5,19 +5,24 @@
   become: false
   vars:
     
-    key_name: "Demo-Automation"
-    ssh_pub_key_content: "{{ ssh_public_key_var }}"    # Key used for SSH
-    region: us-east-1       # Region may affect response and pricing
-    image: ami-0ef50c2b2eb330511 # look in ec2 > ami (filter owner alias: amazon) or amis of manually launched instances
-    id: "example testing"
-    instance_type: t2.nano       # Choose instance type, check AWS for pricing
-    # vpc_id: subnet-012345
-    sec_group: "aws-admins2"
+    instance_type: t3.micro
+
+    ami: ami-0f9d9a251c1a44858
+
+    key_name: ansible-demo
+
+    vpc_name: ansible-vpc-test
+
+    cidr_block: "10.10.0.0/16"
+
+    cidr: "10.10.0.0/24"
+
+    region: ap-east-1
 
     #These are environment vars from Ansible that reference the AWX creds stored in the GUI
     #https://docs.ansible.com/automation-controller/4.1.0/html/userguide/credentials.html
-    ec2_access_key:  "{{ lookup('env', 'AWS_ACCESS_KEY_ID')  }}"
-    ec2_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY')  }}"
+    aws_access_key:  "{{ lookup('env', 'AWS_ACCESS_KEY_ID')  }}"
+    aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY')  }}"
    
   roles:
   
