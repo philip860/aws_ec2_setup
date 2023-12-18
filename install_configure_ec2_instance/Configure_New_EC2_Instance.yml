@@ -19,6 +19,8 @@
 
     region: us-east-1
 
+    ssh_pub_key_content: "{{ ssh_public_key_var }}"    # Key used for SSH
+
     #These are environment vars from Ansible that reference the AWX creds stored in the GUI
     #https://docs.ansible.com/automation-controller/4.1.0/html/userguide/credentials.html
     #aws_access_key:  "{{ lookup('env', 'AWS_ACCESS_KEY_ID')  }}"
