@@ -17,7 +17,7 @@
 
     cidr: "10.10.0.0/24"
 
-    region: ap-east-1
+    region: us-east-1
 
     #These are environment vars from Ansible that reference the AWX creds stored in the GUI
     #https://docs.ansible.com/automation-controller/4.1.0/html/userguide/credentials.html
