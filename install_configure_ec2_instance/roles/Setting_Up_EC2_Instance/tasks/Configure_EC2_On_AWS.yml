@@ -1,3 +1,7 @@
+    
+      
+
+    
     - name: Create a new VPC 
 
       amazon.aws.ec2_vpc_net:
@@ -30,6 +34,27 @@
         vpc_id: "{{ vpc.vpc.id }}"
 
       register: subnet
+    - name: Make File/Directory
+      ansible.builtin.shell: "mkdir /tmp; touch /tmp/my_aws.pub"
+      args:
+        executable: /bin/bash
+
+    - name: Generate SSH Public Key On localhost
+      ansible.builtin.shell: "echo {{ ssh_pub_key_content }} > /tmp/my_aws.pub"
+      args:
+        executable: /bin/bash
+
+
+
+    - name: Amazon EC2 | Create Key Pair      # Create key pair for ssh
+      amazon.aws.ec2_key:
+        name: "{{ key_name }}"
+        region: "{{ region }}"
+        aws_access_key: "{{ lookup('env', 'AWS_ACCESS_KEY_ID')  }}"  # From vault as defined
+        aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY')  }}"  # From vault as defined
+        key_material: "{{ item }}"
+      with_file: /tmp/my_aws.pub
+    
     
 
     - name: Create a Security Group  
